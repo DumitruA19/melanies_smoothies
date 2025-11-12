@@ -41,8 +41,9 @@ if ingredients_list:
         response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         if response.ok:
             st.dataframe(data=response.json(), use_container_width=True)
-    else:
-        st.error(f"Could not retrieve info for {fruit_chosen}")
+        else:
+            st.error(f"Could not retrieve info for {fruit_chosen}")
+          
         my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+ name_on_order +"""')"""
 
